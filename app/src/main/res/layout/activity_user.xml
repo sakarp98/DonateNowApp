@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent">-->
+
+<!--</LinearLayout>-->
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/drawer_layout"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="#FFFFFF"
+
+tools:context=".MainActivity">
+
+<android.support.v7.widget.RecyclerView
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:id="@+id/myrecyclerview"
+    >
+
+</android.support.v7.widget.RecyclerView>
+
+
+
+
+
+
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <include
+        android:id="@+id/main_page_toolbar"
+        layout = "@layout/app_bar_layout"
+
+        >
+
+    </include>
+
+    <FrameLayout
+        android:id="@+id/main_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:layout_alignTop="@+id/main_page_toolbar"
+        android:layout_marginTop="0dp">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/menuitems"
+            android:layout_width="422dp"
+            android:layout_height="659dp"
+
+
+            android:layout_alignStart="@+id/main_container"
+            tools:layoutManager="GridLayoutManager"
+            tools:listitem="@layout/recycler_view_item"
+            tools:spanCount="5" />
+    </FrameLayout>
+
+
+    <ImageButton
+        android:id="@+id/sendmessage"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginRight="55dp"
+
+
+        android:layout_alignTop="@id/main_container"
+        android:layout_alignParentEnd="true"
+
+
+        android:background="@color/colorPrimaryDark"
+        android:focusableInTouchMode="false"
+        android:scaleType="centerCrop"
+        android:src="@drawable/sendmessage">
+
+
+    </ImageButton>
+
+    <!--<ImageButton-->
+        <!--android:id="@+id/createpost"-->
+        <!--android:layout_width="35dp"-->
+        <!--android:layout_height="35dp"-->
+        <!--android:layout_marginTop="11dp"-->
+        <!--android:layout_marginRight="6dp"-->
+
+
+        <!--android:layout_alignTop="@id/main_container"-->
+        <!--android:layout_alignParentEnd="true"-->
+
+
+        <!--android:background="@color/colorPrimaryDark"-->
+        <!--android:focusableInTouchMode="false"-->
+        <!--android:scaleType="centerCrop"-->
+        <!--android:src="@drawable/add_post_high">-->
+
+
+    <!--</ImageButton>-->
+
+
+</RelativeLayout>
+
+<android.support.design.widget.NavigationView
+    android:id="@+id/navigation_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="start"
+    android:layout_marginBottom="3dp"
+    app:menu="@menu/navigation_menu">
+
+</android.support.design.widget.NavigationView>
+
+
+</android.support.v4.widget.DrawerLayout>

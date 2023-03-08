@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "335109545277",
+    "firebase_url": "https://gofundmenepal-f8988.firebaseio.com",
+    "project_id": "gofundmenepal-f8988",
+    "storage_bucket": "gofundmenepal-f8988.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:335109545277:android:7339a18f55c6533f",
+        "android_client_info": {
+          "package_name": "com.example.gofundmenepal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "335109545277-v2elu09qp63uvtki753q4if9iorlo4a0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gofundmenepal",
+            "certificate_hash": "ec8783bfc48ba127a9a19344331185a8a9908a11"
+          }
+        },
+        {
+          "client_id": "335109545277-vu4tmb2djv8hfvjt83sb5apsu4nrv2us.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCG6nuziOElS6jatDrjuAhFJGg34TXBjyo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "335109545277-vu4tmb2djv8hfvjt83sb5apsu4nrv2us.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

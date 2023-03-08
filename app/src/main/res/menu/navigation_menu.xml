@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+    android:id = "@+id/nav_home"
+    android:title="Home"
+        android:icon = "@drawable/home"
+        />
+    <item
+        android:id = "@+id/nav_profile"
+        android:title="Profile"
+        android:icon = "@drawable/profile_icon" />
+    <item
+        android:id = "@+id/nav_inbox"
+        android:title="Inbox"
+        android:icon = "@drawable/messages" />
+
+    <item
+        android:id = "@+id/nav_notifications"
+        android:title="Notifications"
+        android:icon = "@drawable/notification" />
+
+    <item
+        android:id = "@+id/nav_donation"
+        android:title="My Donations"
+        android:icon = "@drawable/donation"/>
+
+    <item
+        android:id = "@+id/nav_account"
+        android:title="Account Settings"
+        android:icon="@drawable/accountsetting"/>
+
+    <item
+        android:id = "@+id/nav_help"
+        android:title="Help"
+        android:icon = "@drawable/help" />
+
+    <item
+        android:id = "@+id/nav_aboutus"
+        android:title="About FundNepal"
+        android:icon = "@drawable/about" />
+   
+
+    <item
+        android:id = "@+id/nav_logout"
+        android:title="Sign out"
+        android:icon="@drawable/signout"/>
+
+</menu>

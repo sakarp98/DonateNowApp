@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AccountSettings"
+   >
+
+    <TextView
+        android:id="@+id/textviewaccount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:padding="10dp"
+
+        android:text="Account Name (*)"
+
+
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/accountname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textviewaccount"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/accounts"
+        android:hint="Enter the Account Name here"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+
+        android:padding="10dp"
+        android:textColorHighlight="@android:color/white"
+         />
+
+    <TextView
+        android:id="@+id/textviewnumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/accountname"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:text="Account Number (*)"
+
+
+        android:textAlignment="center"
+
+
+        android:textSize="20dp"
+        android:textStyle="bold" />
+    <EditText
+        android:id="@+id/accountnumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textviewnumber"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/accounts"
+        android:hint="Enter the Account Number here"
+        android:inputType="number"
+        android:padding="10dp"
+        android:textColorHighlight="@android:color/white"
+
+         />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/accountnumber"
+        android:padding="15dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/button"
+        android:text="Save"
+        android:layout_marginLeft="17dp"
+        android:layout_marginRight="17dp"
+
+        />
+
+
+</RelativeLayout>

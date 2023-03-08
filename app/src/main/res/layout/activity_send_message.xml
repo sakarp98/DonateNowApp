@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SendMessage"
+    android:background="@drawable/aaab">
+
+
+    <TextView
+        android:layout_width="match_parent"
+
+        android:layout_height="20dp"
+        android:textAlignment="center"
+        android:id="@+id/textview"
+        android:textColor="@android:color/white"
+        android:text="Click Below to add Image of needy "
+        />
+    <ImageView
+        android:id="@+id/addimage"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/textview"
+        android:layout_marginTop="10dp"
+
+        app:srcCompat="@drawable/add_post_high"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="2dp" />
+
+    <EditText
+        android:id="@+id/messagename"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/accounts"
+        android:layout_below = "@id/addimage"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textColor="#FFFFFF"
+
+        android:hint="Enter the name of the needy people "
+        android:padding="10dp"
+        />
+
+    <EditText
+        android:id="@+id/messagedetails"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:padding="10dp"
+        android:layout_below="@id/messagename"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/accounts"
+        android:hint="Please Include details about location , background and the cause to raise the fund here"
+
+        />
+
+
+    <EditText
+        android:id="@+id/messageamount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:layout_below="@id/messagedetails"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/accounts"
+        android:hint="Enter the amount to be raised in Rupees "
+        android:inputType="number"
+        android:padding="10dp" />
+
+    <Button
+        android:id="@+id/SendMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/messageamount"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button"
+        android:hint="Send Message to Admin"
+        android:layout_marginLeft="17dp"
+        android:layout_marginRight="17dp"
+        android:padding="15dp"
+        android:textSize="20dp" />
+
+
+</RelativeLayout>

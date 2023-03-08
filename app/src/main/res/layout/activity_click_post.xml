@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:nestedScrollingEnabled="true"
+    android:background="@drawable/clickpostborder"
+
+
+    tools:context=".ClickPost"
+
+  >
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="4dp"
+    android:layout_marginRight="4dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="14dp"
+    android:background="#FFFFFF"
+    >
+
+
+
+
+
+
+    <ImageView
+        android:id="@+id/click_post_image"
+        android:layout_width="fill_parent"
+        android:layout_height="250dp"
+        android:layout_marginLeft="7dp"
+        android:background="@drawable/clickpostborder"
+
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="7dp"
+        android:radius="6dp"
+        android:src="@drawable/add_post_high" />
+
+    <TextView
+        android:id="@+id/click_post_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/click_post_image"
+        android:layout_marginTop="10dp"
+        android:text="POST TITLE"
+        android:layout_marginLeft="9dp"
+        android:layout_marginRight="9dp"
+        android:textColor="@android:color/background_dark"
+
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/click_post_datetime"
+            android:layout_below="@id/click_post_title"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:textSize="12sp"
+
+
+            android:text="Date n Time"
+            android:textColor="@android:color/black"
+            />
+
+        <TextView
+            android:id="@+id/click_post_location"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textSize="12sp"
+            android:layout_marginLeft="10dp"
+
+            android:text="Location"
+            android:layout_below="@id/click_post_datetime"
+            android:textColor="@android:color/black"
+
+            />
+
+    <TextView
+        android:id="@+id/click_post_desc"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/click_post_location"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+
+
+        android:cursorVisible="true"
+        android:isScrollContainer="true"
+        android:nestedScrollingEnabled="true"
+        android:text="This is a description of a post .This is a description of a post .."
+        android:textColor="@android:color/black"
+        android:textSize="20dp"
+        android:verticalScrollbarPosition="right"
+        app:fontFamily="sans-serif-condensed-medium" />
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <Button
+            android:id="@+id/click_post_donate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Donate"
+            android:layout_below="@id/click_post_desc"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/accounts"
+            android:textColor="#FFFFFF"
+
+
+
+
+
+
+            />
+
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/click_post_donate"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="8dp"
+
+        android:orientation="horizontal"
+
+
+        >
+
+
+
+        <ImageButton
+            android:id="@+id/clickpost_like_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:padding="8dp"
+
+
+            android:src="@drawable/dislike" />
+
+
+
+        <ImageButton
+            android:id="@+id/clickpost_comment_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:background="#FFFFFF"
+            android:padding="8dp"
+
+
+
+
+            android:src="@drawable/comment" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/share"
+            android:src="@drawable/share"
+            android:background="#FFFFFF"
+            android:padding="5dp"
+            android:layout_marginLeft="70dp"
+            />
+
+
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>
+
+</ScrollView>
