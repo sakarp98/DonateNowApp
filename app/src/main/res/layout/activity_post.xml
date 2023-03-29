@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#89D62F"
+    android:background="#dbffb3"
     android:layout_height="match_parent"
     tools:context=".PostActivity">
 
@@ -15,20 +15,45 @@
 
     </include>
 
-    <ImageButton
+<!--    <ImageButton-->
+<!--        android:id="@+id/createpostImage"-->
+<!--        android:layout_below="@id/update_post_page_toolbar"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="200dp"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:cropToPadding="false"-->
+<!--        android:layout_alignParentRight="true"-->
+<!--        android:layout_marginLeft="16dp"-->
+<!--         android:layout_marginTop="65dp"-->
+<!--        android:layout_marginEnd="16dp"-->
+<!--        android:layout_marginRight="16dp"-->
+<!--        android:background="@drawable/clickpostborder"-->
+<!--        android:src="@drawable/add_post_high" />-->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_marginTop="85dp"
+        android:layout_height="20dp"
+        android:textAlignment="center"
+        android:id="@+id/textview"
+        android:textColor="@color/colorPrimary"
+        android:text="Click Below to add Post Image "
+        android:gravity="center_horizontal" />
+
+    <ImageView
         android:id="@+id/createpostImage"
-        android:layout_below="@id/update_post_page_toolbar"
-        android:layout_width="375dp"
-        android:layout_height="200dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:cropToPadding="false"
-        android:layout_alignParentRight="true"
-        android:layout_marginLeft="16dp"
-         android:layout_marginTop="65dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        app:srcCompat="@drawable/add_post" />
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/textview"
+        android:layout_marginTop="10dp"
+
+        app:srcCompat="@drawable/add_post_high"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="2dp" />
+
+
 
     <EditText
 
@@ -36,19 +61,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:hint="add post title here . . . "
-        android:textColor="#2C2C2C"
-        android:background="#EEEDEA"
+        android:hint="Add post title here . . . "
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textColor="#4A4848"
+        android:background="#FFFFFF"
         android:textSize="20dp"
 
-
         android:layout_below="@id/createpostImage"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginRight="12dp"
 
-
-        android:textStyle="bold" />
+        />
 
     <EditText
         android:layout_width="150dp"
@@ -57,8 +80,8 @@
         android:layout_marginLeft="10dp"
         android:layout_below="@id/createpostTitle"
         android:layout_marginTop="7dp"
-        android:textColor="#6B6767"
-        android:text="Location"/>
+        android:textColor="#4A4848"
+        android:hint="Location"/>
 
 
 
@@ -69,7 +92,7 @@
         android:layout_width="match_parent"
         android:layout_height="180dp"
         android:layout_below="@id/createpostLocation"
-        android:background="#EEEDEA"
+        android:background="#ffffff"
 
 
         android:layout_marginLeft="12dp"
@@ -77,19 +100,23 @@
         android:layout_marginRight="12dp"
         android:hint="Write Post Description here "
         android:textColor="@color/black"
+        android:textAlignment="center"
         android:textSize="18dp"
         app:fontFamily="sans-serif-condensed-medium" />
     <Button
         android:id="@+id/createpostButton"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+
         android:layout_below="@id/createpostDesc"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp"
         android:text="Create Post"
+        android:textColor="#ffffff"
+        android:textSize="18dp"
 
-        android:background="@drawable/accounts"/>
+        android:background="@drawable/button"/>
 
 
 </RelativeLayout>

@@ -13,7 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -37,7 +37,7 @@ public class PostActivity extends AppCompatActivity {
     private Toolbar mToolbar ;
 
     private ProgressDialog loadingBar;
-    private ImageButton SelectPostImage ;
+    private ImageView SelectPostImage ;
     private Button UpdatePostButton ;
     private EditText PostDescription , PostTitle , PostLocation ;
     private Uri ImageUri;
@@ -64,7 +64,7 @@ public class PostActivity extends AppCompatActivity {
         PostsRef = FirebaseDatabase.getInstance().getReference().child("Posts");
 
 
-        SelectPostImage = (ImageButton) findViewById(R.id.createpostImage) ;
+        SelectPostImage = (ImageView) findViewById(R.id.createpostImage) ;
         UpdatePostButton = (Button) findViewById(R.id.createpostButton);
         PostDescription = (EditText) findViewById(R.id.createpostDesc);
         PostTitle = (EditText) findViewById(R.id.createpostTitle);

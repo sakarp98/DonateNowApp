@@ -32,12 +32,14 @@
         android:layout_width="fill_parent"
         android:layout_height="250dp"
         android:layout_marginLeft="7dp"
-        android:background="@drawable/clickpostborder"
+
 
         android:layout_marginTop="10dp"
         android:layout_marginRight="7dp"
         android:radius="6dp"
-        android:src="@drawable/add_post_high" />
+        android:background="@drawable/clickpostborder"
+        android:src="@drawable/add_post_high"
+        />
 
     <TextView
         android:id="@+id/click_post_title"
@@ -53,75 +55,159 @@
         android:textSize="25dp"
         android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/click_post_datetime"
-            android:layout_below="@id/click_post_title"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/click_post_title"
+        android:id="@+id/click_post_user"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        >
+
+        <!-- Left column for user profile image -->
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/click_post_user_profile_image"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/profile"
+            android:padding="0dp"
+            app:civ_border_color="@color/colorPrimary"
+            app:civ_border_width="1dp"/>
+
+        <!-- Right column for location and date time of post -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-            android:textSize="12sp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="0dp">
+
+<LinearLayout
+    android:id="@+id/lay"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/click_post_title"
+    >
+    <TextView
+        android:id="@+id/click_post_datetime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:textSize="12sp"
+        android:text="Userame"
+        android:textColor="@android:color/black"
+        />
+    <ImageView
+        android:layout_marginTop="3dp"
+        android:id="@+id/tick"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:src="@drawable/tick"
+        />
+</LinearLayout>
+
+            <TextView
+                android:id="@+id/click_post_location"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:textSize="12sp"
+                android:layout_marginLeft="10dp"
+                android:text="Location"
+                android:layout_below="@id/lay"
+                android:textColor="@android:color/black"
+                />
+        </LinearLayout>
 
 
-            android:text="Date n Time"
-            android:textColor="@android:color/black"
-            />
 
-        <TextView
-            android:id="@+id/click_post_location"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:textSize="12sp"
-            android:layout_marginLeft="10dp"
+    </LinearLayout>
 
-            android:text="Location"
-            android:layout_below="@id/click_post_datetime"
-            android:textColor="@android:color/black"
+    <ProgressBar
+        android:id="@+id/post_progress_bar_desc"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/click_post_user"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+       android:maxHeight="4dp"
+        android:minHeight="4dp"
+        android:max="100"
+        android:progress="0"
+        android:progressBackgroundTint="#EAE6E6"
+        android:progressTint="#01FA23" />
 
-            />
+    <TextView
+        android:id="@+id/donation_Raised_desc"
+        android:layout_below="@id/post_progress_bar_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="5dp"
+        android:textSize="12sp"
+        android:textStyle="italic"
+
+        android:text="$170000 Raised out of $200000 "
+        android:textColor="@android:color/black"
+        />
+    <Button
+        android:id="@+id/click_post_donate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Donate"
+        android:layout_below="@id/donation_Raised_desc"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/button"
+        android:textColor="#FFFFFF"
+
+        />
+
+
+    <Button
+        android:layout_below="@id/click_post_donate"
+        android:id="@+id/incrementButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginTop="12dp"
+
+        android:text="SHARE"
+        android:textColor="#ffffff"
+        android:background="@drawable/button"
+        android:onClick="incrementProgress" />
 
     <TextView
         android:id="@+id/click_post_desc"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@id/click_post_location"
+        android:layout_below="@id/incrementButton"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
 
 
         android:cursorVisible="true"
         android:isScrollContainer="true"
         android:nestedScrollingEnabled="true"
         android:text="This is a description of a post .This is a description of a post .."
-        android:textColor="@android:color/black"
+        android:textColor="#8C8282"
         android:textSize="20dp"
         android:verticalScrollbarPosition="right"
         app:fontFamily="sans-serif-condensed-medium" />
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-
-        <Button
-            android:id="@+id/click_post_donate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Donate"
-            android:layout_below="@id/click_post_desc"
-            android:layout_marginLeft="6dp"
-            android:layout_marginRight="6dp"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/accounts"
-            android:textColor="#FFFFFF"
 
 
 
 
-
-
-            />
 
 
 
@@ -129,60 +215,57 @@
 
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/click_post_donate"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_below="@id/click_post_desc"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
         android:layout_marginRight="10dp"
-        android:layout_marginBottom="8dp"
-
+        android:layout_marginBottom="15dp"
         android:orientation="horizontal"
-
-
         >
 
-
-
         <ImageButton
-            android:id="@+id/clickpost_like_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/clickpostlike_button"
+            android:layout_width="0dp"
+            android:layout_height="25dp"
+            android:scaleType="fitCenter"
             android:background="#FFFFFF"
-            android:padding="8dp"
-
-
+            android:layout_weight="1"
             android:src="@drawable/dislike" />
 
-
+        <TextView
+            android:id="@+id/clickpost_display_no_of_likes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop= "2dp"
+            android:padding="4dp"
+            android:text="0 Likes"
+            android:textColor="@android:color/black"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:visibility="invisible"/>
 
         <ImageButton
             android:id="@+id/clickpost_comment_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
+            android:layout_width="0dp"
+            android:layout_height="25dp"
+            android:scaleType="fitCenter"
             android:background="#FFFFFF"
-            android:padding="8dp"
-
-
-
-
+            android:layout_weight="2"
             android:src="@drawable/comment" />
 
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/share"
+            android:id="@+id/clickpost_share"
+            android:layout_width="0dp"
+            android:layout_height="25dp"
+            android:scaleType="fitCenter"
             android:src="@drawable/share"
             android:background="#FFFFFF"
-            android:padding="5dp"
-            android:layout_marginLeft="70dp"
-            />
-
+            android:layout_weight="2"/>
 
 
     </LinearLayout>
-
 
 
 </RelativeLayout>

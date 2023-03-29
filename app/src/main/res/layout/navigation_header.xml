@@ -34,4 +34,17 @@
         android:textColor="@android:color/background_light"
         android:textSize="16dp" />
 
+    <ImageView
+        android:id="@+id/ticknav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/navprofile_image"
+        android:layout_alignLeft="@id/nav_user_full_name"
+        android:src="@drawable/tick"
+        android:visibility="invisible"
+
+
+
+        />
+
 </RelativeLayout>

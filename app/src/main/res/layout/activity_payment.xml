@@ -46,6 +46,6 @@
         android:textStyle="bold"
         android:layout_marginLeft="35dp"
         android:layout_below="@id/khalti_button"
-        android:text="I agree to the terms and conditions of Fund Nepal ."/>
+        android:text="I agree to the terms and conditions of DonateNow ."/>
 
 </RelativeLayout>

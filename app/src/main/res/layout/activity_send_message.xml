@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SendMessage"
-    android:background="@drawable/aaab">
+    android:background="#dbffb3">
 
 
     <TextView
@@ -16,7 +16,10 @@
         android:id="@+id/textview"
         android:textColor="@android:color/white"
         android:text="Click Below to add Image of needy "
-        />
+        android:gravity="center_horizontal" />
+
+
+
     <ImageView
         android:id="@+id/addimage"
         android:layout_width="150dp"
@@ -29,19 +32,43 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="2dp" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:id="@+id/textview2"
+        android:textAlignment="center"
+        android:layout_below = "@id/addimage"
+        android:textColor="@color/colorPrimaryDark"
+        android:text="Click to add Photo "
+
+        android:gravity="center_horizontal" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/campaign_info"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_below = "@id/textview2"
+        android:textColor="@color/colorPrimaryDark"
+        android:text="Fundraising Details "
+        android:textSize="18dp"
+        android:textStyle="bold"
+        />
+
+
     <EditText
         android:id="@+id/messagename"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/accounts"
-        android:layout_below = "@id/addimage"
+        android:background="#ffffff"
+        android:layout_below = "@id/campaign_info"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:textColor="#FFFFFF"
+        android:textColor="#4A4848"
 
-        android:hint="Enter the name of the needy people "
+        android:hint="Enter the Campaign Name "
         android:padding="10dp"
         />
 
@@ -51,11 +78,11 @@
         android:layout_height="150dp"
         android:padding="10dp"
         android:layout_below="@id/messagename"
-        android:textColor="#FFFFFF"
+        android:textColor="#4A4848"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:background="@drawable/accounts"
+        android:background="#ffffff"
         android:hint="Please Include details about location , background and the cause to raise the fund here"
 
         />
@@ -65,13 +92,13 @@
         android:id="@+id/messageamount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#FFFFFF"
+        android:textColor="#4A4848"
         android:layout_below="@id/messagedetails"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:background="@drawable/accounts"
-        android:hint="Enter the amount to be raised in Rupees "
+        android:background="#ffffff"
+        android:hint="Enter the total donation required in US$ "
         android:inputType="number"
         android:padding="10dp" />
 
@@ -82,11 +109,11 @@
         android:layout_below="@id/messageamount"
         android:layout_marginTop="10dp"
         android:background="@drawable/button"
-        android:hint="Send Message to Admin"
+        android:hint="CREATE FUNDRAISING CAMPAIGN"
         android:layout_marginLeft="17dp"
         android:layout_marginRight="17dp"
         android:padding="15dp"
-        android:textSize="20dp" />
+        android:textSize="18dp" />
 
 
 </RelativeLayout>
