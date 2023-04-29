@@ -8,14 +8,19 @@ public class Posts {
    private String Time ;
    private String location ;
 
+   private String initialAmount;
+   private String finalAmount;
 
 
 
-    public Posts(String title, String desc, String image , String time , String date) {
+
+    public Posts(String title, String desc, String image , String time , String date, String initialAmount, String finalAmount) {
         this.title = title;
         this.desc = desc;
         this.image = image;
         this.date = date;
+        this.initialAmount = initialAmount;
+        this.finalAmount = finalAmount;
 
 
         this.location = location ;
@@ -23,6 +28,22 @@ public class Posts {
 
     public String getDate() {
         return date;
+    }
+
+    public String getInitialAmount() {
+        return initialAmount;
+    }
+
+    public void setInitialAmount(String initialAmount) {
+        this.initialAmount = initialAmount;
+    }
+
+    public String getFinalAmount() {
+        return finalAmount;
+    }
+
+    public void setFinalAmount(String finalAmount) {
+        this.finalAmount = finalAmount;
     }
 
     public void setDate(String date) {

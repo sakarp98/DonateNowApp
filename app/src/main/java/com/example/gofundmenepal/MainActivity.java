@@ -2,6 +2,7 @@ package com.example.gofundmenepal;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -34,31 +35,36 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class MainActivity extends AppCompatActivity {
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
+
+    public static int addedAmt;
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private RecyclerView postList, postData;
     private CircleImageView NavProfileImage;
-    private TextView NavProfileUserName;
+    private TextView NavProfileUserName, donation_raised_value1, donation_raised_value2;
     private Toolbar mToolbar;
-    private ImageView navtick ;
+    private ImageView navtick;
     private FirebaseAuth mAuth;
     private DatabaseReference UsersRef, PostsRef, rootRef, LikesRef, DonateRef;
     private ImageButton SendMessageButton, CreatePost;
+    private ProgressBar progressBar2;
     String currentUserID;
     Boolean LikeChecker = false;
+    static SharedPreferences sharedPreferences;
+    ProgressBar progressBar;
+    static int totalAmt = 0;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+
         super.onCreate(savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
         currentUserID = mAuth.getCurrentUser().getUid();
-  navtick = findViewById(R.id.ticknav);
-       // navtick.setVisibility(View.GONE);
+        navtick = findViewById(R.id.ticknav);
+        // navtick.setVisibility(View.GONE);
 
-
-
-        if (currentUserID.equals("JRtEIb5kuLfMHAJhKU71FBdWigH3") || currentUserID.equals("RYLY33JaFsXLdQs24HuvxRCnHo13") || currentUserID.equals("9LYGbUm8RPRWSbP8g9RzdEbyMaA3" )) {
+        if (currentUserID.equals("3eb3KmxH42S4tQnZT5uMBqSBLbi1") || currentUserID.equals("T31qnBHYnxXAmgNZn62Of5kd5np1") || currentUserID.equals("fzpwEaxpouOspte8E6dO9RD7G9h1") || currentUserID.equals("6T0dJDfPCmYWQDv47JoAOrzajdH2") || currentUserID.equals("JRtEIb5kuLfMHAJhKU71FBdWigH3") || currentUserID.equals("RYLY33JaFsXLdQs24HuvxRCnHo13") || currentUserID.equals("eJW4T0ybGTVXoUrwPSjbifHRJtk1") ||  currentUserID.equals("9LYGbUm8RPRWSbP8g9RzdEbyMaA3")) {
             setContentView(R.layout.activity_main);
             // navtick.setVisibility(View.GONE);
             CreatePost = (ImageButton) findViewById(R.id.createpost);
@@ -70,12 +76,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
-        }
-
-
-        else {
+        } else {
             setContentView(R.layout.activity_user);
-           // navtick.setVisibility(View.GONE);
+            // navtick.setVisibility(View.GONE);
             SendMessageButton = (ImageButton) findViewById(R.id.sendmessage);
             SendMessageButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -110,10 +113,31 @@ public class MainActivity extends AppCompatActivity {
         NavProfileImage = (CircleImageView) navView.findViewById(R.id.navprofile_image);
         NavProfileUserName = (TextView) navView.findViewById(R.id.nav_user_full_name);
 
+        SharedPreferences prefs = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        String textKey = "text";
+
+        Intent intent = getIntent();
+        addedAmt = intent.getIntExtra("addedAmt", 0);
 
 
 
 
+//        progressBar2.setProgress(progress);
+
+
+        //updateProgress(50);
+
+
+//        try
+//        {
+//            addedAmt = getIntent().getExtras().get("addedAmt").toString();
+//        }
+//        catch (Exception e)
+//        {
+//            System.out.println("Hello" + e.getMessage());
+//        }
+
+        //int addedAmountmoney  = Integer.parseInt(addedAmt);
 
 
         UsersRef.child(currentUserID).addValueEventListener(new ValueEventListener() {
@@ -127,8 +151,6 @@ public class MainActivity extends AppCompatActivity {
 
 
                         NavProfileUserName.setText(fullname);
-
-
 
 
                     }
@@ -151,8 +173,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-
 
 
         postData = (RecyclerView) findViewById(R.id.myrecyclerview);
@@ -197,22 +217,59 @@ public class MainActivity extends AppCompatActivity {
                     protected void populateViewHolder(PostViewHolder viewHolder, Posts model, int position) {
 
                         final String PostKey = getRef(position).getKey();
+
+
                         viewHolder.setTitle(model.getTitle());
                         viewHolder.setDesc(model.getDesc());
                         viewHolder.setDate(model.getDate());
+                        viewHolder.setInitialAmount(Integer.parseInt(model.getInitialAmount()), addedAmt);
+                        viewHolder.setFinalAmount(model.getFinalAmount());
+
+
+                        viewHolder.progressbar(model.getInitialAmount(),model.getFinalAmount(), addedAmt);
 
                         viewHolder.setLocation(model.getLocation());
 
                         viewHolder.setImage(getApplicationContext(), model.getImage());
 
                         viewHolder.mView.setOnClickListener(new View.OnClickListener() {
+
                             @Override
                             public void onClick(View v) {
+
+
                                 Intent ClickPostIntent = new Intent(MainActivity.this, ClickPost.class);
                                 ClickPostIntent.putExtra("PostKey", PostKey);
+                                ClickPostIntent.putExtra("amtclick", addedAmt);
+                                ClickPostIntent.putExtra("initialProgress", Integer.parseInt(model.getInitialAmount()) );
+                                ClickPostIntent.putExtra("finalProgress",Integer.parseInt(model.getFinalAmount()));
+
+
                                 startActivity(ClickPostIntent);
+//                                progressBar = findViewById(R.id.post_progress_bar);
+//
+//                                progressBar.setProgress(Integer.parseInt(model.getInitialAmount()));
+//                                int currentProgress = progressBar.getProgress();
+//                                //progressBar = findViewById(R.id.post_progress_bar);
+//                                progressBar.setMax(Integer.parseInt(model.getFinalAmount()));
+//                                progressBar.setMin(Integer.parseInt(model.getInitialAmount()));
+//
+//                                int newProgress = currentProgress + addedAmt;
+//                                progressBar.setProgress(newProgress);
+
+
                             }
+
+
+
+
+
+
                         });
+
+
+
+
 
 
 
@@ -231,10 +288,6 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onClick(View v) {
 
-                                ProgressBar progressBar2 = findViewById(R.id.post_progress_bar);
-                                int currentProgress = progressBar2.getProgress();
-                                int newProgress = currentProgress + 10;
-                                progressBar2.setProgress(newProgress);
                                 LikeChecker = true;
                                 LikesRef.addValueEventListener(new ValueEventListener() {
                                     @Override
@@ -265,11 +318,19 @@ public class MainActivity extends AppCompatActivity {
                             }
                         });
 
+
+
                     }
                 };
         postData.setAdapter(firebaseRecyclerAdapter);
 
+
+
+
     }
+
+
+
 
     public static class PostViewHolder extends RecyclerView.ViewHolder {
 
@@ -280,14 +341,16 @@ public class MainActivity extends AppCompatActivity {
         int countLikes;
         String currentUserId;
         DatabaseReference LikesRef;
-        ProgressBar progressBar ;
+
+        private ProgressBar progressBar;
+
 
         public PostViewHolder(@NonNull View itemView) {
             super(itemView);
             mView = itemView;
 
             ProgressBar progressBar = mView.findViewById(R.id.post_progress_bar);
-                     progressBar.setProgress(10);
+
 
             LikePostButton = (ImageButton) mView.findViewById(R.id.like_button);
             CommentPostButton = (ImageButton) mView.findViewById(R.id.comment_button);
@@ -295,7 +358,6 @@ public class MainActivity extends AppCompatActivity {
 
             LikesRef = FirebaseDatabase.getInstance().getReference().child("Likes");
             currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
 
 
         }
@@ -326,6 +388,19 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+        public void progressbar(String initialAmt, String finalAmt, int nextAddedAmt) {
+            progressBar = mView.findViewById(R.id.post_progress_bar);
+            progressBar.setMax(Integer.parseInt(finalAmt));
+            progressBar.setProgress(Integer.parseInt(initialAmt));
+            int currentProgress = progressBar.getProgress();
+            int newProgress = currentProgress + addedAmt;
+            progressBar.setProgress(newProgress);
+
+
+
+
+        }
+
         public void setDate(String date) {
             TextView postDate = (TextView) mView.findViewById(R.id.post_date);
             postDate.setText(date);
@@ -347,6 +422,25 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+
+        public void setInitialAmount(int initialAmount, int addedAmount) {
+
+
+              totalAmt = addedAmount;
+
+           // int amt = Integer.parseInt(initialAmount);
+           // amt+= addedAmt;
+            TextView postAmount1 = (TextView) mView.findViewById(R.id.postdonation_Raised_desc1);
+            postAmount1.setText("$" + (initialAmount+totalAmt) +" raised of $");
+
+
+        }
+
+        public void setFinalAmount(String initialAmount) {
+            TextView postAmount2 = (TextView) mView.findViewById(R.id.postdonation_Raised_desc2);
+            postAmount2.setText(initialAmount);
+        }
+
         public void setTitle(String title) {
             TextView postTitle = (TextView) mView.findViewById(R.id.post_title);
             postTitle.setText(title);
@@ -356,6 +450,26 @@ public class MainActivity extends AppCompatActivity {
             ImageView featimage = (ImageView) mView.findViewById(R.id.featured_image);
             Picasso.with(ctx).load(image).into(featimage);
         }
+
+//        public void updateProgress(int value) {
+//            // Update the progress bar
+//            progressBar.setProgress(value);
+//
+//            // Store the new progress value in SharedPreferences
+//            SharedPreferences.Editor editor = sharedPreferences.edit();
+//            editor.putInt("progress_value", value);
+//            editor.apply();
+//        }
+
+
+//        public void setProgressBar()
+//        {
+//            ProgressBar progressBar = mView.findViewById(R.id.post_progress_bar);
+//                progressBar.setMax();
+//                int currentProgress = progressBar.getProgress();
+//                int newProgress = currentProgress + 10;
+//                progressBar.setProgress(newProgress);
+//        }
 
 
     }
@@ -429,7 +543,6 @@ public class MainActivity extends AppCompatActivity {
     private void UserMenuSelector(MenuItem menuItem) {
 
 
-
         switch (menuItem.getItemId()) {
             case R.id.nav_profile:
                 Toast.makeText(this, "Profile", Toast.LENGTH_SHORT).show();
@@ -488,7 +601,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void SendUserToAboutActivity() {
-        Intent aboutintent = new Intent(MainActivity.this, AboutUs.class);
+        Intent aboutintent = new Intent(MainActivity.this, ChatGPTGenerate.class);
 
         startActivity(aboutintent);
 
@@ -503,15 +616,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void SendUserToAccountActivity() {
-        Intent intent = new Intent(MainActivity.this, AccountSettings.class);
+        Intent intent = new Intent(MainActivity.this, GptMEssages.class);
 
         startActivity(intent);
 
 
     }
 
-
-
+//    public void updateProgress(int value) {
+//        // Update the progress bar
+//        progressBar2.setProgress(value);
+//
+//        // Store the new progress value in SharedPreferences
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+//        editor.putInt("progress_value", value);
+//        editor.apply();
+//    }
 
 
 }

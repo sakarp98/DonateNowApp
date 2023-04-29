@@ -44,6 +44,9 @@ public class SendMessage extends AppCompatActivity {
     private Uri resultUri;
     private StorageReference ImageRef ;
     final static int Gallery_Pick = 1 ;
+    final static int Folder_Pick = 1 ;
+
+    private ImageView PeoplefolderImage ;
 
 
 
@@ -70,6 +73,8 @@ public class SendMessage extends AppCompatActivity {
         Messageamount = (EditText) findViewById(R.id.messageamount) ;
         Sendmessage = (Button) findViewById(R.id.SendMessage) ;
         PeopleImage = (ImageView)findViewById(R.id.addimage);
+      //  PeoplefolderImage = (ImageView)findViewById(R.id.peoplefolderimage);
+
         Sendmessage.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
@@ -88,11 +93,6 @@ public class SendMessage extends AppCompatActivity {
                 startActivityForResult(GalleryIntent , Gallery_Pick );
             }
         });
-
-
-
-
-
 
     }
 

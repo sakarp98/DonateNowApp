@@ -67,6 +67,7 @@
 
         <!-- Right column for location and date time of post -->
         <LinearLayout
+            android:id="@+id/linearLayouDetail"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
@@ -78,7 +79,7 @@
 
             <TextView
                 android:id="@+id/donor_username"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/post_title"
                 android:textStyle="bold"
@@ -88,11 +89,11 @@
 
             <TextView
                 android:id="@+id/donor_amount"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/post_date"
                 android:layout_marginTop="2dp"
-                android:text="5$ donated"
+                android:text="20$ donated"
                 android:textStyle="bold"
                 android:textColor="#717171"
                 android:textSize="12sp"
@@ -112,7 +113,7 @@
         android:layout_marginRight="55dp"
         android:background="#FF08DE25"
         android:padding="15dp"
-        android:hint="Writ a Comment here ! !"
+        android:hint="Write a Comment here ! !"
         android:inputType="textMultiLine"
         />
 

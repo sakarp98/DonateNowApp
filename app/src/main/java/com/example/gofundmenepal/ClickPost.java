@@ -1,6 +1,5 @@
 package com.example.gofundmenepal;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -22,18 +21,20 @@ import com.squareup.picasso.Picasso;
 
 public class ClickPost extends AppCompatActivity {
 
-    private TextView ClickPostTitle , ClickPostDesc , ClickPostDateTime , ClickPostLocation, donation_raised_value ;
+    private TextView ClickPostTitle , ClickPostDesc , ClickPostDateTime , ClickPostLocation,
+            ClickPostInitialAmount, ClickPostFinalAmount ;
 
 
     private ImageView ClickPostImage , IVtick;
     private  String PostKey ;
+    public static int clickaddedAmt, initialProgressAmount, finalProgressAmount;
     private DatabaseReference ClickPostRef , UsersRef;
   private Button ClickPostDonate, clickprogressincrement ;
     private ImageButton ClickPostLike ,ClickPostComment ,  ClickPostShare ;
     private FirebaseAuth mAuth;
     String currentUserID;
 
-    @SuppressLint("MissingInflatedId")
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,17 +48,17 @@ public class ClickPost extends AppCompatActivity {
         ClickPostComment = (ImageButton)findViewById(R.id.clickpost_comment_button);
         ClickPostShare = (ImageButton)findViewById(R.id.clickpost_share);
 
+
+
 //        ClickPostLike.setVisibility(View.INVISIBLE);
 //        ClickPostComment.setVisibility(View.INVISIBLE);
 //        ClickPostShare.setVisibility(View.INVISIBLE);
 
-        donation_raised_value = findViewById(R.id.donation_Raised_desc);
 
         mAuth = FirebaseAuth.getInstance();
         currentUserID = mAuth.getCurrentUser().getUid();
 
-        ProgressBar progressBar = findViewById(R.id.post_progress_bar_desc);
-        progressBar.setProgress(0);
+
 
 
 
@@ -68,7 +69,19 @@ public class ClickPost extends AppCompatActivity {
         ClickPostLocation = (TextView)findViewById(R.id.click_post_location);
         clickprogressincrement = findViewById(R.id.incrementButton);
 
+        ClickPostInitialAmount = findViewById(R.id.clickpostdonation_Raised_desc1);
+        ClickPostFinalAmount = findViewById(R.id.clickpostdonation_Raised_desc2);
+        ProgressBar progressBar = findViewById(R.id.post_progress_bar_desc);
+
+
+
         IVtick = (ImageView)findViewById(R.id.tick);
+
+
+        Intent intent1 = getIntent();
+        clickaddedAmt = intent1.getIntExtra("amtclick",0);
+        initialProgressAmount = intent1.getIntExtra("initialProgress",1);
+        finalProgressAmount = intent1.getIntExtra("finalProgress",2);
 
 //        if (currentUserID.equals("RYLY33JaFsXLdQs24HuvxRCnHo13")) {
 //            IVtick.setVisibility(View.VISIBLE);
@@ -82,17 +95,19 @@ public class ClickPost extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                ProgressBar progressBar = findViewById(R.id.post_progress_bar_desc);
-                int currentProgress = progressBar.getProgress();
-                int newProgress = currentProgress + 10;
-                progressBar.setProgress(newProgress);
+
             }
         });
 
         ClickPostDonate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SendUserToDonateActivity();
+//                ProgressBar progressBar = findViewById(R.id.post_progress_bar_desc);
+//                progressBar.setMax(100);
+//                int currentProgress = progressBar.getProgress();
+//                int newProgress = currentProgress + 10;
+//                progressBar.setProgress(newProgress);
+                    SendUserToDonateActivity();
             }
         });
 
@@ -100,14 +115,17 @@ public class ClickPost extends AppCompatActivity {
         ClickPostRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
                 String description = dataSnapshot.child("desc").getValue().toString();
                 String title = dataSnapshot.child("title").getValue().toString();
                 String image = dataSnapshot.child("image").getValue().toString();
                 String date = dataSnapshot.child("fullname").getValue().toString();
                 String location = dataSnapshot.child("location").getValue().toString();
+                String initialAmount = dataSnapshot.child("initialAmount").getValue().toString();
+                String finalAmount = dataSnapshot.child("finalAmount").getValue().toString();
 
 
-                if (date.equals("Prakash") || date.equals("Company xyz")) {
+                if (date.equals("Prakash") || date.equals("Company xyz") || date.equals("Taylor Swift")) {
             IVtick.setVisibility(View.VISIBLE);
         }
         else {
@@ -118,10 +136,20 @@ public class ClickPost extends AppCompatActivity {
                 ClickPostDateTime.setText(date);
                 ClickPostLocation.setText(location);
 
+                progressBar.setMax(finalProgressAmount);
+                progressBar.setProgress(initialProgressAmount);
+
+                int currentProgress = progressBar.getProgress();
+                int newProgress = currentProgress + clickaddedAmt;
+                progressBar.setProgress(newProgress);
 
 
                 ClickPostDesc.setText(description);
+                ClickPostInitialAmount.setText("$" + (Integer.parseInt(initialAmount)  + clickaddedAmt) + " raised of $");
+                ClickPostFinalAmount.setText(finalAmount);
                 Picasso.with(ClickPost.this).load(image).into(ClickPostImage);
+
+
 
             }
 
@@ -134,6 +162,9 @@ public class ClickPost extends AppCompatActivity {
 
 
 
+
+
+
     }
 
     private void SendUserToDonateActivity() {
@@ -141,6 +172,7 @@ public class ClickPost extends AppCompatActivity {
         clickIntent.putExtra("PostKey" , PostKey);
         startActivity(clickIntent);
     }
+
 
 
 }

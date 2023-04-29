@@ -36,12 +36,14 @@ import java.util.HashMap;
 public class PostActivity extends AppCompatActivity {
     private Toolbar mToolbar ;
 
+
+
     private ProgressDialog loadingBar;
     private ImageView SelectPostImage ;
     private Button UpdatePostButton ;
-    private EditText PostDescription , PostTitle , PostLocation ;
+    private EditText PostDescription , PostTitle , PostLocation , InitialAmount, FinalAmount ;
     private Uri ImageUri;
-    private String Description , Location , Title  ;
+    private String Description , Location , Title, AmtInitial, AmtFinal  ;
     private String saveCurrentDate, saveCurrentTime, postRandomName, downloadUrl, current_user_id;
 
 
@@ -50,6 +52,7 @@ public class PostActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
     private static final int Gallery_Pick = 1 ;
+
 
 
     @Override
@@ -67,8 +70,12 @@ public class PostActivity extends AppCompatActivity {
         SelectPostImage = (ImageView) findViewById(R.id.createpostImage) ;
         UpdatePostButton = (Button) findViewById(R.id.createpostButton);
         PostDescription = (EditText) findViewById(R.id.createpostDesc);
+        InitialAmount = findViewById(R.id.amountInitial);
+        FinalAmount = findViewById(R.id.amountFinal);
         PostTitle = (EditText) findViewById(R.id.createpostTitle);
         PostLocation = (EditText) findViewById(R.id.createpostLocation);
+
+
 
         loadingBar = new ProgressDialog(this);
         mToolbar = (Toolbar) findViewById(R.id.update_post_page_toolbar);
@@ -100,6 +107,8 @@ public class PostActivity extends AppCompatActivity {
         Description = PostDescription.getText().toString();
         Location = PostLocation.getText().toString();
         Title = PostTitle.getText().toString();
+        AmtInitial = InitialAmount.getText().toString();
+        AmtFinal = FinalAmount.getText().toString();
 
         if(ImageUri == null)
         {
@@ -185,13 +194,15 @@ public class PostActivity extends AppCompatActivity {
                 if (dataSnapshot.exists())
                 {
                     String adminFullname= dataSnapshot.child("fullname").getValue().toString();
-
-                    HashMap postsMap = new HashMap();
+                     HashMap postsMap = new HashMap();
                     postsMap.put("uid" , current_user_id);
+
                     postsMap.put("date" , saveCurrentDate);
                     postsMap.put("image" , downloadUrl);
                     postsMap.put("desc" , Description);
                     postsMap.put("title" , Title);
+                    postsMap.put("initialAmount",AmtInitial );
+                    postsMap.put("finalAmount",AmtFinal);
                     postsMap.put("location" , Location);
                     postsMap.put("time" , saveCurrentTime);
                     postsMap.put("fullname" , adminFullname);

@@ -12,9 +12,10 @@
         android:title="Profile"
         android:icon = "@drawable/profile_icon" />
     <item
-        android:id = "@+id/nav_inbox"
-        android:title="Inbox"
+        android:id = "@+id/nav_aboutus"
+        android:title="GPT4- Generate Your Text"
         android:icon = "@drawable/messages" />
+
 
     <item
         android:id = "@+id/nav_notifications"
@@ -25,6 +26,10 @@
         android:id = "@+id/nav_donation"
         android:title="My Donations"
         android:icon = "@drawable/donation"/>
+    <item
+        android:id = "@+id/nav_inbox"
+        android:title="Inbox"
+        android:icon = "@drawable/messages" />
 
     <item
         android:id = "@+id/nav_account"
@@ -36,10 +41,7 @@
         android:title="Help"
         android:icon = "@drawable/help" />
 
-    <item
-        android:id = "@+id/nav_aboutus"
-        android:title="About DonateNow"
-        android:icon = "@drawable/about" />
+
    
 
     <item

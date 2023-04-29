@@ -2,8 +2,10 @@ package com.example.gofundmenepal;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
@@ -37,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
 
-
+        showSnackbar();
 
         NeedNewAccountLink = (TextView) findViewById(R.id.register_account_link);
 
@@ -63,6 +65,21 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void showSnackbar() {
+        Snackbar snackbar = Snackbar.make(findViewById(R.id.facebook_si), "Wanna watch video tutorial for using DonateNow??", Snackbar.LENGTH_LONG);
+        //snackbar.getView().setBackgroundColor(Color.);
+        snackbar.setAction("Click Here", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String url = "https://www.youtube.com/watch?v=bbf54eAPBKI&ab_channel=PRAKASH";
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(intent);
+            }
+        });
+        snackbar.show();
+    }
+
 
 
 

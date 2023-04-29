@@ -1,9 +1,12 @@
 package com.example.gofundmenepal;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.squareup.okhttp.Callback;
@@ -27,15 +30,51 @@ import khalti.widget.KhaltiButton;
 public class Payment extends AppCompatActivity implements View.OnClickListener {
 
     Config config;
-    TextView payamt;
+    TextView payamt , ClickPostFinalAmount3 ;
+    public int maxProgressValue;
+    private Button paypalTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
         payamt = (TextView) findViewById(R.id.paymentAmt);
+        paypalTextView = findViewById(R.id.idBtnPay);
+        Button donateAmtWork = findViewById(R.id.donateAmtWork);
+
+
+        paypalTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Step 5: Create an Intent to launch the PayPal browser
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.paypal.com/us/signin"));
+                startActivity(browserIntent);
+            }
+        });
+
+        donateAmtWork.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int amt;
+                amt = Integer.parseInt(payamt.getText().toString());
+                doSth(amt);
+
+            }
+        });
+
+
         KhaltiButton khaltiButton = (KhaltiButton) findViewById(R.id.khalti_button);
+
         khaltiButton.setOnClickListener(Payment.this);
+    }
+
+    private void doSth(int amt) {
+
+
+
+        Intent donateAmtIntent = new Intent(Payment.this, MainActivity.class);
+        donateAmtIntent.putExtra("addedAmt", amt);
+        startActivity(donateAmtIntent);
     }
 
     @Override

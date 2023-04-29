@@ -26,13 +26,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-public class AboutUs extends AppCompatActivity {
+public class ChatGPTGenerate extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private MessageAdapter mAdapter;
     private EditText mEditText;
     private Button mButton;
     private String apiUrl = "https://api.openai.com/v1/completions";
-    private String accessToken = "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";
+    private String accessToken = "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";
     private List < Message > mMessages;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

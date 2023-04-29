@@ -8,16 +8,6 @@
     android:background="#dbffb3">
 
 
-    <TextView
-        android:layout_width="match_parent"
-
-        android:layout_height="20dp"
-        android:textAlignment="center"
-        android:id="@+id/textview"
-        android:textColor="@android:color/white"
-        android:text="Click Below to add Image of needy "
-        android:gravity="center_horizontal" />
-
 
 
     <ImageView
@@ -88,12 +78,46 @@
         />
 
 
+
+    <RelativeLayout
+        android:id="@+id/folderRel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/messagedetails"
+        >
+
+        <TextView
+            android:id="@+id/folder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#4A4848"
+            android:layout_below="@id/messagedetails"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:hint="Add supporting document here ->"
+            android:inputType="number"
+            android:padding="10dp" />
+
+        <ImageView
+            android:id="@+id/peoplefolderimage"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@id/folder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/folder"
+            />
+
+    </RelativeLayout>
+
     <EditText
         android:id="@+id/messageamount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#4A4848"
-        android:layout_below="@id/messagedetails"
+android:layout_below="@+id/folderRel"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
@@ -101,6 +125,8 @@
         android:hint="Enter the total donation required in US$ "
         android:inputType="number"
         android:padding="10dp" />
+
+
 
     <Button
         android:id="@+id/SendMessage"

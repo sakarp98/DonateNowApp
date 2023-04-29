@@ -3,7 +3,7 @@ package com.example.gofundmenepal;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class AccountSettings extends AppCompatActivity {
+public class GptMEssages extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

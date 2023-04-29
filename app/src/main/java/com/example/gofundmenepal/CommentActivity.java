@@ -1,5 +1,6 @@
 package com.example.gofundmenepal;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,7 +36,11 @@ public class CommentActivity extends AppCompatActivity {
     private DatabaseReference UsersRef , PostsRef ;
     private FirebaseAuth mAuth ;
 
+    private LinearLayout linearLayout;
+    private TextView donorUsername, donotDonation ;
 
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +61,29 @@ public class CommentActivity extends AppCompatActivity {
         CommentsList.setLayoutManager(linearLayoutManager);
         CommentInputText = (EditText)findViewById(R.id.comment_input);
         PostCommentButton = (ImageButton) findViewById(R.id.post_comment_button);
+        linearLayout = (LinearLayout) findViewById(R.id.don_Image);
+
+        donorUsername = findViewById(R.id.donor_username);
+        donotDonation = findViewById(R.id.donor_amount);
+
+        if(Post_Key.equals("fzpwEaxpouOspte8E6dO9RD7G9h1null"))
+        {
+            linearLayout.setVisibility(View.VISIBLE);
+        }
+        else if (Post_Key.equals("T31qnBHYnxXAmgNZn62Of5kd5np1null"))
+        {
+            donorUsername.setText("Anonymous Donation");
+            donotDonation.setText("100$ donated");
+
+            linearLayout.setVisibility(View.VISIBLE);
+        }
+        else
+        {
+            linearLayout.setVisibility(View.INVISIBLE);
+        }
+
+
+
 
 
 

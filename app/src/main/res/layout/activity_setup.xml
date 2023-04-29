@@ -12,7 +12,9 @@
         android:id="@+id/textgovid"
         android:layout_width="wrap_content"
       android:layout_centerHorizontal="true"
-        android:text="Upload you gov. issued id here"
+        android:textColor="#706464"
+        android:textStyle="bold"
+        android:text="Upload you government issued id below"
         android:layout_height="wrap_content"
         ></TextView>
 

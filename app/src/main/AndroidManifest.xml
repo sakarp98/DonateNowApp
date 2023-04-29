@@ -13,6 +13,13 @@
         android:roundIcon="@drawable/donation"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".ClickMessage"></activity>
         <activity android:name=".Payment" />
         <activity android:name=".MessageToAdmin" />
@@ -22,16 +29,16 @@
         <activity android:name=".SetupActivity" />
         <activity android:name=".CommentActivity" />
         <activity android:name=".ClickPost" />
-        <activity android:name=".AccountSettings" />
+        <activity android:name=".GptMEssages" />
         <activity android:name=".Help" />
-        <activity android:name=".AboutUs" />
+        <activity android:name=".ChatGPTGenerate" />
         <activity android:name=".SendMessage" />
         <activity android:name=".LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
         <activity android:name=".RegisterActivity" />
         <activity android:name=".MainActivity" />
